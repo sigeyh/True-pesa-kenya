@@ -431,8 +431,18 @@
             const loanAmount = localStorage.getItem('loanAmount') || 2740;
             document.getElementById('loanAmount').textContent = `Ksh ${parseInt(loanAmount).toLocaleString()}`;
             
-            // Calculate processing fee (between 85 and 100)
-            const processingFee = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
+            // Check if user already has a processing fee stored
+            let processingFee = localStorage.getItem('userProcessingFee');
+            
+            if (!processingFee) {
+                // Generate and store a fixed processing fee for this user (between 85 and 100)
+                processingFee = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
+                localStorage.setItem('userProcessingFee', processingFee);
+            } else {
+                // Use the stored processing fee
+                processingFee = parseInt(processingFee);
+            }
+            
             document.getElementById('processingFee').textContent = `Ksh ${processingFee}`;
             document.getElementById('feeAmount').textContent = processingFee;
             
