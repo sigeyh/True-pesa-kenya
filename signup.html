@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Eligibility - True Pesa</title>
+    <title>Sign Up - True Pesa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -59,93 +59,78 @@
         
         .content {
             padding: 30px;
-            text-align: center;
         }
         
         .page-title {
             font-size: 1.8rem;
             color: #2c3e50;
             margin-bottom: 5px;
+            text-align: center;
         }
         
         .page-subtitle {
             font-size: 1rem;
             color: #7f8c8d;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            text-align: center;
         }
         
-        .eligibility-card {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 25px 0;
-            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        .form-group {
+            margin-bottom: 20px;
         }
         
-        .eligibility-label {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-        
-        .loan-amount {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 15px 0;
-        }
-        
-        .currency {
-            font-size: 1.5rem;
-            vertical-align: top;
-            margin-right: 5px;
-        }
-        
-        .eligibility-note {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 10px;
-        }
-        
-        .features {
-            display: flex;
-            justify-content: space-around;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .feature {
-            flex: 1;
-            min-width: 120px;
-            padding: 15px;
-            margin: 10px;
-        }
-        
-        .feature-icon {
-            font-size: 2rem;
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-        
-        .feature-title {
-            font-weight: 600;
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
             color: #2c3e50;
-            margin-bottom: 5px;
         }
         
-        .feature-desc {
-            font-size: 0.8rem;
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             color: #7f8c8d;
         }
         
-        .button-container {
-            margin-top: 20px;
+        input, select {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border 0.3s, box-shadow 0.3s;
         }
         
-        .get-loan-button {
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .name-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .name-group .form-group {
+            flex: 1;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .submit-button {
             background: linear-gradient(90deg, #3498db, #2c3e50);
             color: white;
-            padding: 18px 40px;
+            padding: 15px 40px;
             font-size: 1.2rem;
             font-weight: 600;
             border: none;
@@ -154,15 +139,14 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
             width: 100%;
-            max-width: 300px;
         }
         
-        .get-loan-button:hover {
+        .submit-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
         }
         
-        .get-loan-button:active {
+        .submit-button:active {
             transform: translateY(1px);
         }
         
@@ -174,21 +158,9 @@
             border-top: 1px solid #eee;
         }
         
-        .disclaimer {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            margin-top: 20px;
-            line-height: 1.4;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
+        .required::after {
+            content: " *";
+            color: #e74c3c;
         }
         
         @media (max-width: 480px) {
@@ -200,12 +172,9 @@
                 padding: 25px;
             }
             
-            .loan-amount {
-                font-size: 2.5rem;
-            }
-            
-            .features {
+            .name-group {
                 flex-direction: column;
+                gap: 0;
             }
         }
     </style>
@@ -222,51 +191,93 @@
         </div>
         
         <div class="content">
-            <h1 class="page-title">Your Loan Eligibility</h1>
-            <p class="page-subtitle">Based on your account activity and profile</p>
+            <h1 class="page-title">Sign Up</h1>
+            <p class="page-subtitle">Create your True Pesa account</p>
             
-            <div class="eligibility-card pulse">
-                <div class="eligibility-label">You're eligible for</div>
-                <div class="loan-amount">
-                    <span class="currency">Ksh</span>
-                    <span id="loanAmount">2,740</span>
-                </div>
-                <div class="eligibility-note">Instant approval • No collateral required</div>
-            </div>
-            
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+            <form id="signup-form">
+                <div class="name-group">
+                    <div class="form-group">
+                        <label for="lastName" class="required">Last Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
                     </div>
-                    <div class="feature-title">Instant</div>
-                    <div class="feature-desc">Get funds in minutes</div>
+                    
+                    <div class="form-group">
+                        <label for="firstName" class="required">First Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-percentage"></i>
+                <div class="form-group">
+                    <label for="phone" class="required">Phone Number</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
                     </div>
-                    <div class="feature-title">Low Interest</div>
-                    <div class="feature-desc">Competitive rates</div>
                 </div>
                 
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="form-group">
+                    <label for="idNumber" class="required">ID Number</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-id-card input-icon"></i>
+                        <input type="text" id="idNumber" name="idNumber" placeholder="Enter your ID number" required>
                     </div>
-                    <div class="feature-title">Secure</div>
-                    <div class="feature-desc">Your data is protected</div>
                 </div>
-            </div>
-            
-            <div class="button-container">
-                <a href="verification.html" class="get-loan-button">Get Loan</a>
-            </div>
-            
-            <div class="disclaimer">
-                By proceeding, you agree to our Terms of Service and Privacy Policy. Loan eligibility is subject to verification and approval.
-            </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Email Address</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location" class="required">Select Location</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-map-marker-alt input-icon"></i>
+                        <select id="location" name="location" required>
+                            <option value="" disabled selected>--- Select County ---</option>
+                            <option value="nairobi">Nairobi</option>
+                            <option value="mombasa">Mombasa</option>
+                            <option value="kisumu">Kisumu</option>
+                            <option value="nakuru">Nakuru</option>
+                            <option value="eldoret">Eldoret</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob" class="required">Date of Birth</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-calendar-alt input-icon"></i>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender" class="required">Select Gender</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-venus-mars input-icon"></i>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>--- Select Gender ---</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
         </div>
         
         <div class="footer">
@@ -275,44 +286,85 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to generate random loan amount between 1200 and 3500
-            // that ends with 50 or 00
-            function generateLoanAmount() {
-                // Generate a random base number between 12 and 35 (for thousands)
-                const base = Math.floor(Math.random() * (35 - 12 + 1)) + 12;
-                
-                // Randomly decide if it should end with 00 or 50
-                const endings = [0, 50];
-                const ending = endings[Math.floor(Math.random() * endings.length)];
-                
-                // Calculate the final amount
-                const amount = base * 100 + ending;
-                
-                // Make sure it's within the range (just in case)
-                if (amount < 1200) return 1250;
-                if (amount > 3500) return 3450;
-                
-                return amount;
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+            const requiredFields = document.querySelectorAll('input[required], select[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            // Validate phone number
+            const phone = document.getElementById('phone');
+            const phoneRegex = /^[0-9]{10}$/;
+            if (phone.value && !phoneRegex.test(phone.value)) {
+                isValid = false;
+                phone.style.borderColor = '#e74c3c';
+                alert('Please enter a valid 10-digit phone number');
             }
             
-            // Check if user already has a loan amount stored
-            let loanAmount = localStorage.getItem('userLoanAmount');
-            
-            if (!loanAmount) {
-                // Generate and store a new loan amount for this user
-                loanAmount = generateLoanAmount();
-                localStorage.setItem('userLoanAmount', loanAmount);
-            } else {
-                // Use the stored loan amount
-                loanAmount = parseInt(loanAmount);
+            // Validate ID number
+            const idNumber = document.getElementById('idNumber');
+            const idRegex = /^[0-9]{6,12}$/;
+            if (idNumber.value && !idRegex.test(idNumber.value)) {
+                isValid = false;
+                idNumber.style.borderColor = '#e74c3c';
+                alert('Please enter a valid ID number (6-12 digits)');
             }
             
-            // Display the loan amount
-            document.getElementById('loanAmount').textContent = loanAmount.toLocaleString();
+            // Validate email
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value && !emailRegex.test(email.value)) {
+                isValid = false;
+                email.style.borderColor = '#e74c3c';
+                alert('Please enter a valid email address');
+            }
             
-            // Store the loan amount for use in the next page
-            localStorage.setItem('loanAmount', loanAmount);
+            // Validate date of birth (must be at least 18 years old)
+            const dob = document.getElementById('dob');
+            if (dob.value) {
+                const birthDate = new Date(dob.value);
+                const today = new Date();
+                const age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                
+                if (age < 18) {
+                    isValid = false;
+                    dob.style.borderColor = '#e74c3c';
+                    alert('You must be at least 18 years old to register');
+                }
+            }
+            
+            if (isValid) {
+                // Store user data in localStorage
+                const userData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    phone: document.getElementById('phone').value,
+                    idNumber: document.getElementById('idNumber').value,
+                    email: document.getElementById('email').value,
+                    location: document.getElementById('location').value,
+                    dob: document.getElementById('dob').value,
+                    gender: document.getElementById('gender').value
+                };
+                
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // Redirect to referral page
+                window.location.href = 'referral.html';
+            }
         });
     </script>
 </body>
