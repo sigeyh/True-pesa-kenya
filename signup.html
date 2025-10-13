@@ -69,7 +69,7 @@
         }
         
         .page-subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #7f8c8d;
             margin-bottom: 25px;
             text-align: center;
@@ -194,7 +194,7 @@
             <h1 class="page-title">Sign Up</h1>
             <p class="page-subtitle">Create your True Pesa account</p>
             
-            <form id="signup-form" action="referral.html" method="GET">
+            <form id="signup-form">
                 <div class="name-group">
                     <div class="form-group">
                         <label for="lastName" class="required">Last Name</label>
@@ -286,8 +286,9 @@
     </div>
 
     <script>
-        // Form validation
         document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
             let isValid = true;
             const requiredFields = document.querySelectorAll('input[required], select[required]');
             
@@ -346,8 +347,23 @@
                 }
             }
             
-            if (!isValid) {
-                event.preventDefault();
+            if (isValid) {
+                // Store user data in localStorage
+                const userData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    phone: document.getElementById('phone').value,
+                    idNumber: document.getElementById('idNumber').value,
+                    email: document.getElementById('email').value,
+                    location: document.getElementById('location').value,
+                    dob: document.getElementById('dob').value,
+                    gender: document.getElementById('gender').value
+                };
+                
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // Redirect to referral page
+                window.location.href = 'referral.html';
             }
         });
     </script>
