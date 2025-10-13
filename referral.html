@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral - True Pesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #2c3e50, #3498db);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .benefits {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .benefits-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .benefits-title i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefits-list i {
+            color: #2ecc71;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .optional {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .submit-button {
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+        }
+        
+        .submit-button:active {
+            transform: translateY(1px);
+        }
+        
+        .skip-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .skip-link:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="logo-text">True Pesa</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 class="page-title">Refer a Friend</h1>
+            <p class="page-subtitle">Earn rewards by inviting friends to join True Pesa</p>
+            
+            <div class="benefits">
+                <h3 class="benefits-title"><i class="fas fa-gift"></i> Referral Benefits</h3>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check-circle"></i> Get KES 200 for each friend who signs up</li>
+                    <li><i class="fas fa-check-circle"></i> Your friend gets KES 100 bonus on their first transaction</li>
+                    <li><i class="fas fa-check-circle"></i> No limit on how many friends you can refer</li>
+                    <li><i class="fas fa-check-circle"></i> Rewards credited instantly after your friend's first transaction</li>
+                </ul>
+            </div>
+            
+            <form id="referral-form" action="confirm-details.html" method="GET">
+                <div class="form-group">
+                    <label for="referralCode">Referral Code <span class="optional">(optional)</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user-friends input-icon"></i>
+                        <input type="text" id="referralCode" name="referralCode" placeholder="Enter referral code if you have one">
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button type="submit" class="submit-button">Continue to Confirm Details</button>
+                    <a href="confirm-details.html" class="skip-link">Skip, I don't have a referral code</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 True Pesa. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // In a real application, we would retrieve the user data from the previous page
+        // For demonstration, we'll store sample data in localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we have user data from signup
+            if (!localStorage.getItem('userData')) {
+                // Store sample data for demonstration
+                const userData = {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    phone: '+254712345678',
+                    idNumber: '12345678',
+                    email: 'johndoe@example.com',
+                    location: 'Nairobi',
+                    dob: '1990-05-15',
+                    gender: 'Male'
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+            }
+            
+            // Handle form submission
+            document.getElementById('referral-form').addEventListener('submit', function(e) {
+                // Store referral code if provided
+                const referralCode = document.getElementById('referralCode').value;
+                if (referralCode) {
+                    localStorage.setItem('referralCode', referralCode);
+                }
+                // The form will naturally redirect to confirm-details.html
+            });
+        });
+    </script>
+</body>
+</html>
