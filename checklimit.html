@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Eligibility - True Pesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #2c3e50, #3498db);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .content {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .page-subtitle {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .eligibility-card {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+        
+        .eligibility-label {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .loan-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .currency {
+            font-size: 1.5rem;
+            vertical-align: top;
+            margin-right: 5px;
+        }
+        
+        .eligibility-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px;
+            margin: 10px;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .feature-desc {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+        
+        .button-container {
+            margin-top: 20px;
+        }
+        
+        .get-loan-button {
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .get-loan-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+        }
+        
+        .get-loan-button:active {
+            transform: translateY(1px);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .loan-amount {
+                font-size: 2.5rem;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="logo-text">True Pesa</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 class="page-title">Your Loan Eligibility</h1>
+            <p class="page-subtitle">Based on your account activity and profile</p>
+            
+            <div class="eligibility-card pulse">
+                <div class="eligibility-label">You're eligible for</div>
+                <div class="loan-amount">
+                    <span class="currency">Ksh</span>
+                    <span id="loanAmount">2,740</span>
+                </div>
+                <div class="eligibility-note">Instant approval • No collateral required</div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="feature-title">Instant</div>
+                    <div class="feature-desc">Get funds in minutes</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="feature-title">Low Interest</div>
+                    <div class="feature-desc">Competitive rates</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-title">Secure</div>
+                    <div class="feature-desc">Your data is protected</div>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <a href="verification.html" class="get-loan-button">Get Loan</a>
+            </div>
+            
+            <div class="disclaimer">
+                By proceeding, you agree to our Terms of Service and Privacy Policy. Loan eligibility is subject to verification and approval.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 True Pesa. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to generate random loan amount between 1200 and 3500
+            // that ends with 50 or 00
+            function generateLoanAmount() {
+                // Generate a random base number between 12 and 35 (for thousands)
+                const base = Math.floor(Math.random() * (35 - 12 + 1)) + 12;
+                
+                // Randomly decide if it should end with 00 or 50
+                const endings = [0, 50];
+                const ending = endings[Math.floor(Math.random() * endings.length)];
+                
+                // Calculate the final amount
+                const amount = base * 100 + ending;
+                
+                // Make sure it's within the range (just in case)
+                if (amount < 1200) return 1250;
+                if (amount > 3500) return 3450;
+                
+                return amount;
+            }
+            
+            // Generate and display the loan amount
+            const loanAmount = generateLoanAmount();
+            document.getElementById('loanAmount').textContent = loanAmount.toLocaleString();
+            
+            // Store the loan amount for use in the next page
+            localStorage.setItem('loanAmount', loanAmount);
+        });
+    </script>
+</body>
+</html>
