@@ -250,31 +250,31 @@
                 <div class="details-grid">
                     <div class="detail-item">
                         <div class="detail-label">Full Name</div>
-                        <div class="detail-value" id="fullName">John Doe</div>
+                        <div class="detail-value" id="fullName">Loading...</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Phone Number</div>
-                        <div class="detail-value" id="phoneNumber">+254712345678</div>
+                        <div class="detail-value" id="phoneNumber">Loading...</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">ID Number</div>
-                        <div class="detail-value" id="idNumber">12345678</div>
+                        <div class="detail-value" id="idNumber">Loading...</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Email Address</div>
-                        <div class="detail-value" id="email">johndoe@example.com</div>
+                        <div class="detail-value" id="email">Loading...</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Location</div>
-                        <div class="detail-value" id="location">Nairobi</div>
+                        <div class="detail-value" id="location">Loading...</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Date of Birth</div>
-                        <div class="detail-value" id="dob">May 15, 1990</div>
+                        <div class="detail-value" id="dob">Loading...</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Gender</div>
-                        <div class="detail-value" id="gender">Male</div>
+                        <div class="detail-value" id="gender">Loading...</div>
                     </div>
                 </div>
             </div>
@@ -302,22 +302,39 @@
             const userData = JSON.parse(localStorage.getItem('userData') || '{}');
             const referralCode = localStorage.getItem('referralCode');
             
+            console.log("User Data:", userData); // Debug log
+            
             // Display user data
             if (userData.firstName && userData.lastName) {
                 document.getElementById('fullName').textContent = `${userData.firstName} ${userData.lastName}`;
+            } else {
+                document.getElementById('fullName').textContent = "Not provided";
             }
+            
             if (userData.phone) {
                 document.getElementById('phoneNumber').textContent = userData.phone;
+            } else {
+                document.getElementById('phoneNumber').textContent = "Not provided";
             }
+            
             if (userData.idNumber) {
                 document.getElementById('idNumber').textContent = userData.idNumber;
+            } else {
+                document.getElementById('idNumber').textContent = "Not provided";
             }
+            
             if (userData.email) {
                 document.getElementById('email').textContent = userData.email;
+            } else {
+                document.getElementById('email').textContent = "Not provided";
             }
+            
             if (userData.location) {
                 document.getElementById('location').textContent = userData.location;
+            } else {
+                document.getElementById('location').textContent = "Not provided";
             }
+            
             if (userData.dob) {
                 // Format date for display
                 const dob = new Date(userData.dob);
@@ -326,9 +343,14 @@
                     month: 'long',
                     day: 'numeric'
                 });
+            } else {
+                document.getElementById('dob').textContent = "Not provided";
             }
+            
             if (userData.gender) {
                 document.getElementById('gender').textContent = userData.gender;
+            } else {
+                document.getElementById('gender').textContent = "Not provided";
             }
             
             // Display referral information if available
@@ -339,11 +361,28 @@
             
             // Handle confirmation button click
             document.getElementById('confirmButton').addEventListener('click', function() {
+                // Check if all required fields are filled
+                if (!userData.firstName || !userData.lastName || !userData.phone || 
+                    !userData.idNumber || !userData.email || !userData.location || 
+                    !userData.dob || !userData.gender) {
+                    alert('Please complete all required fields before confirming.');
+                    return;
+                }
+                
                 // In a real application, you would submit the data to the server here
-                alert('Registration completed successfully! Redirecting to dashboard...');
-                // Redirect to dashboard or next page
-                window.location.href = 'dashboard.html';
+                alert('Registration completed successfully! Redirecting to loan eligibility...');
+                
+                // Redirect to loan eligibility page
+                window.location.href = 'checklimit.html';
             });
+            
+            // If no user data is found, show a message and redirect to signup
+            if (!userData.firstName && !userData.lastName) {
+                setTimeout(function() {
+                    alert('No user data found. Please complete the signup form first.');
+                    window.location.href = 'signup.html';
+                }, 1000);
+            }
         });
     </script>
 </body>
