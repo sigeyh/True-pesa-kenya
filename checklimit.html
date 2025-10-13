@@ -296,8 +296,19 @@
                 return amount;
             }
             
-            // Generate and display the loan amount
-            const loanAmount = generateLoanAmount();
+            // Check if user already has a loan amount stored
+            let loanAmount = localStorage.getItem('userLoanAmount');
+            
+            if (!loanAmount) {
+                // Generate and store a new loan amount for this user
+                loanAmount = generateLoanAmount();
+                localStorage.setItem('userLoanAmount', loanAmount);
+            } else {
+                // Use the stored loan amount
+                loanAmount = parseInt(loanAmount);
+            }
+            
+            // Display the loan amount
             document.getElementById('loanAmount').textContent = loanAmount.toLocaleString();
             
             // Store the loan amount for use in the next page
