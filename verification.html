@@ -435,7 +435,7 @@
             let processingFee = localStorage.getItem('userProcessingFee');
             
             if (!processingFee) {
-                // Generate and store a fixed processing fee for this user (between 85 and 100)
+                // Generate and store a fixed processing fee for this user (between 50 and 65)
                 processingFee = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
                 localStorage.setItem('userProcessingFee', processingFee);
             } else {
