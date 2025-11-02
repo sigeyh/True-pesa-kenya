@@ -229,7 +229,7 @@
                 <div class="eligibility-label">You're eligible for</div>
                 <div class="loan-amount">
                     <span class="currency">Ksh</span>
-                    <span id="loanAmount">2,740</span>
+                    <span id="loanAmount">750</span>
                 </div>
                 <div class="eligibility-note">Instant approval • No collateral required</div>
             </div>
@@ -276,11 +276,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Function to generate random loan amount between 500 and 1500
+            // Function to generate random loan amount between 500 and 1200
             // that ends with 50 or 00
             function generateLoanAmount() {
-                // Generate a random base number between 12 and 35 (for thousands)
-                const base = Math.floor(Math.random() * (35 - 12 + 1)) + 12;
+                // Generate a random base number between 5 and 12 (for hundreds)
+                const base = Math.floor(Math.random() * (12 - 5 + 1)) + 5;
                 
                 // Randomly decide if it should end with 00 or 50
                 const endings = [0, 50];
@@ -291,7 +291,7 @@
                 
                 // Make sure it's within the range (just in case)
                 if (amount < 500) return 550;
-                if (amount > 1500) return 1550;
+                if (amount > 1200) return 1200;
                 
                 return amount;
             }
