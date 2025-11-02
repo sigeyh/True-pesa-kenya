@@ -276,7 +276,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Function to generate random loan amount between 1200 and 3500
+            // Function to generate random loan amount between 500 and 1500
             // that ends with 50 or 00
             function generateLoanAmount() {
                 // Generate a random base number between 12 and 35 (for thousands)
@@ -290,8 +290,8 @@
                 const amount = base * 100 + ending;
                 
                 // Make sure it's within the range (just in case)
-                if (amount < 1200) return 1250;
-                if (amount > 3500) return 3450;
+                if (amount < 500) return 550;
+                if (amount > 1500) return 1550;
                 
                 return amount;
             }
