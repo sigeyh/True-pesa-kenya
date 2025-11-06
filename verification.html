@@ -323,6 +323,37 @@
             background: #2980b9;
         }
         
+        /* Countdown Styles */
+        .countdown-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .countdown-title {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .countdown-timer {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e74c3c;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .countdown-message {
+            font-size: 1rem;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
         @media (max-width: 480px) {
             .container {
                 border-radius: 15px;
@@ -421,6 +452,14 @@
                 Your processing fee payment has been verified. Please wait for the M-Pesa confirmation message. 
                 Your loan will be processed shortly.
             </p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-container" id="countdownContainer">
+                <div class="countdown-title">Processing your loan application</div>
+                <div class="countdown-timer" id="countdownTimer">7:00</div>
+                <div class="countdown-message" id="countdownMessage">Please wait while we process your application...</div>
+            </div>
+            
             <button class="modal-button" id="modalOkButton">OK</button>
         </div>
     </div>
@@ -479,6 +518,12 @@
             const mpesaMessage = document.getElementById('mpesaMessage');
             const successModal = document.getElementById('successModal');
             const modalOkButton = document.getElementById('modalOkButton');
+            const countdownTimer = document.getElementById('countdownTimer');
+            const countdownMessage = document.getElementById('countdownMessage');
+            
+            // Countdown variables
+            let countdownInterval;
+            let timeLeft = 7 * 60; // 7 minutes in seconds
             
             verifyButton.addEventListener('click', function() {
                 const message = mpesaMessage.value.trim();
@@ -488,16 +533,63 @@
                 if (message.includes(storedFee) && message.includes("HAKIKA R PROVISION")) {
                     // Show success modal
                     successModal.style.display = 'flex';
+                    
+                    // Start countdown timer
+                    startCountdown();
                 } else {
                     alert('Invalid M-Pesa message. Please ensure the message contains the correct processing fee and shows payment to HAKIKA R PROVISION.');
                 }
             });
             
+            // Start countdown function
+            function startCountdown() {
+                // Reset timer
+                timeLeft = 7 * 60;
+                updateCountdownDisplay();
+                
+                // Clear any existing interval
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                }
+                
+                // Start new interval
+                countdownInterval = setInterval(function() {
+                    timeLeft--;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        countdownMessage.textContent = "Please wait for the M-Pesa message. Your loan is being processed.";
+                        countdownTimer.textContent = "0:00";
+                        
+                        // Enable the OK button after countdown finishes
+                        modalOkButton.disabled = false;
+                        modalOkButton.style.opacity = "1";
+                        modalOkButton.style.cursor = "pointer";
+                    } else {
+                        updateCountdownDisplay();
+                    }
+                }, 1000);
+                
+                // Disable the OK button during countdown
+                modalOkButton.disabled = true;
+                modalOkButton.style.opacity = "0.5";
+                modalOkButton.style.cursor = "not-allowed";
+            }
+            
+            // Update countdown display
+            function updateCountdownDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                countdownTimer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }
+            
             // Close modal
             modalOkButton.addEventListener('click', function() {
-                successModal.style.display = 'none';
-                // In a real application, you would redirect to a success page or dashboard
-                // window.location.href = 'dashboard.html';
+                if (!modalOkButton.disabled) {
+                    successModal.style.display = 'none';
+                    // In a real application, you would redirect to a success page or dashboard
+                    // window.location.href = 'dashboard.html';
+                }
             });
             
             // Close modal if clicked outside
